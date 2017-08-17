@@ -1,15 +1,63 @@
+:root {
+  --button-color-green-back: #4fc6b0;
+  --button-color-green-degrade: linear-gradient(to left, #3ed2a4, #5dccb7);
+  --button-color-green-light: #3ed2a4;
+  --button-color-green-dashed-text: #5dccb7;
+  --button-color-green-dashed-hover-text: #4db9a5;
+  --button-color-green-text: #fff;
+}
+
+
 .button {
   border: none;
   border-radius: 3px;
-  padding: 8px 16px;
-  background-color: #0000ff;
-  color: #000000;
+  padding: 12px 16px;
   font-size: 15px;
   font-family: "Uni Neue";
   font-weight: 600;
   letter-spacing: 0.05em;
+  border-radius: 3px;
+  text-transform: uppercase;
 }
 
-.primary {
-  background-color: #ff0000;
+.green {
+  color: var(--button-color-green-text);
+  background-color: var(--button-color-green-light);
+}
+
+.green.degrade {
+  background: var(--button-color-green-degrade);
+}
+
+.green:hover {
+  background-color: var(--button-color-green-back);
+  background-image: none;
+}
+
+.dashed {
+  border: dashed 1px;
+}
+
+.outline {
+  border: solid 1px;
+}
+
+.dashed,
+.dashed:hover,
+.outline,
+.outline:hover {
+  background-color: transparent;
+  background-image: none;
+}
+
+.dashed.green,
+.outline.green {
+  color: var(--button-color-green-dashed-text);
+  border-color: var(--button-color-green-dashed-text);
+}
+
+.dashed.green:hover,
+.outline.green:hover {
+  color: var(--button-color-green-dashed-hover-text);
+  border-color: var(--button-color-green-dashed-hover-text);
 }
