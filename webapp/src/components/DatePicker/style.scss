@@ -1,0 +1,104 @@
+$react-dates-width-input: 130px !default;
+$react-dates-width-arrow: 24px !default;
+$react-dates-width-tooltip-arrow: 20px !default;
+$react-dates-spacing-vertical-picker: 72px !default;
+
+$react-dates-color-primary: #00a699 !default;
+$react-dates-color-primary-shade-1: #33dacd !default;
+$react-dates-color-primary-shade-2: #66e2da !default;
+$react-dates-color-primary-shade-3: #80e8e0 !default;
+$react-dates-color-primary-shade-4: #b2f1ec !default;
+$react-dates-color-secondary: #007a87 !default;
+$react-dates-color-white: #fff !default;
+$react-dates-color-gray: #565a5c !default;
+$react-dates-color-gray-dark: darken($react-dates-color-gray, 10.5%) !default;
+$react-dates-color-gray-light: lighten($react-dates-color-gray, 17.8%) !default;
+$react-dates-color-gray-lighter: lighten($react-dates-color-gray, 45%) !default;
+$react-dates-color-gray-lightest: lighten($react-dates-color-gray, 60%) !default;
+$react-dates-color-highlighted: #ffe8bc !default;
+
+$react-dates-color-border: #dbdbdb !default;
+$react-dates-color-border-light: #dce0e0 !default;
+$react-dates-color-border-medium: #c4c4c4 !default;
+$react-dates-color-placeholder-text: #757575 !default;
+$react-dates-color-text: #484848 !default;
+$react-dates-color-text-focus: #007a87 !default;
+$react-dates-color-focus: #99ede6 !default;
+
+$react-dates-z-index: 0 !default;
+
+@import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+
+:global .DayPicker__week-headers {
+}
+
+:global .DayPickerNavigation--horizontal {
+  height: 15.63em;
+  background-image: linear-gradient(-145deg, rgba(104, 181, 193, 0.4), #3ed2a4);
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  border-radius: 3px;
+  background-color: #fff;
+  background-color: #fff;
+  box-shadow: 0 0 9.9px 0.1px rgba(85, 99, 116, 0.3);
+  border: solid 1px #d2d2d2;
+
+  .DayPickerNavigation__prev,
+  .DayPickerNavigation__next {
+    height: 2em;
+  }
+}
+
+:global .DayPickerNavigation--horizontal * {
+  position: unset !important;
+  padding: unset !important;
+  top: unset !important;
+  z-index: unset !important;
+  border: unset !important;
+}
+
+:global .transition-container--horizontal {
+  position: relative !important;
+  width: 300px !important;
+  z-index: 11 !important;
+  transform: translateY(0em);
+}
+
+:global .CalendarMonthGrid--horizontal {
+  left: unset;
+}
+
+:global .DayPicker--horizontal {
+  width: 300px !important;
+  overflow: hidden !important;
+}
+
+:global .DayPicker--horizontal * {
+  overflow: unset !important;
+}
+
+:global .CalendarMonthGrid {
+  background-color: unset;
+}
+
+:global .CalendarMonth--horizontal {
+  .CalendarMonth__caption {
+    padding: unset !important;
+    z-index: 20;
+    position: relative;
+    width: 91%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    transform: translate(5%, -1.5em);
+  }
+
+  .CalendarMonth__caption {
+
+  }
+}
