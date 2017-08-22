@@ -18,3 +18,6 @@ storiesOf( 'Button', module )
 
   .add( 'green dashed', () =>
     <Button onClick={action( 'clicked' )} type="dashed">Dashed Button</Button> )
+
+  .add( 'green clean', () =>
+    <Button onClick={action( 'clicked' )} type="clean">Clean Button</Button> )

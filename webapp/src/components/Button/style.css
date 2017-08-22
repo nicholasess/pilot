@@ -45,19 +45,31 @@
 .dashed,
 .dashed:hover,
 .outline,
-.outline:hover {
+.outline:hover,
+.clean,
+.clean:hover {
   background-color: transparent;
   background-image: none;
 }
 
 .dashed.green,
-.outline.green {
+.outline.green,
+.clean.green {
   color: var(--button-color-green-dashed-text);
+}
+
+.dashed.green,
+.outline.green {
   border-color: var(--button-color-green-dashed-text);
 }
 
 .dashed.green:hover,
-.outline.green:hover {
+.outline.green:hover,
+.clean.green:hover {
   color: var(--button-color-green-dashed-hover-text);
+}
+
+.dashed.green:hover,
+.outline.green:hover {
   border-color: var(--button-color-green-dashed-hover-text);
 }
