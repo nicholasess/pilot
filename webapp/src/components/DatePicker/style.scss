@@ -174,16 +174,16 @@ $react-dates-z-index: 0 !default;
   transform: translate(-0.7em, 450px);
 }
 
-.CalendarMonthGrid {
-  background-color: transparent;
-}
-
 .DatePicker_open .DatePicker_confirmation__button {
   border: none;
   background: none;
   color: #3ed2a4;
   cursor: pointer;
   padding: 0.5em 1em;
+}
+
+.CalendarMonthGrid {
+  background-color: transparent;
 }
 
 .CalendarDay--selected-start button:after {

@@ -10,12 +10,12 @@ storiesOf('DatePicker', module)
     <DatePicker
       focused={true}
       showClearDate={true}
-      onDateChange={action('Date Changed')}
-      onFocusChange={action('Focus Changed')}
+      onDateChange={action('onDateChange')}
+      onFocusChange={action('onFocusChange')}
     />)
   .add('Escolha um periodo de datas', () =>
     <DatePicker
       range
-      onDatesChange={action('Date Changed')}
-      onFocusChange={action('Focus Changed')}
+      onDatesChange={action('onDatesChange')}
+      onFocusChange={action('onFocusChange')}
     />)

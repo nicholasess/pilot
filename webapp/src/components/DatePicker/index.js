@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   DateRangePicker,
   SingleDatePicker
@@ -12,6 +12,7 @@ import classNames from 'classnames'
 import IconAngleLeft from 'react-icons/lib/fa/angle-left'
 import IconAngleRight from 'react-icons/lib/fa/angle-right'
 import tz from 'moment-timezone'
+import StateComponent from './StateComponent'
 
 import './style.scss'
 
@@ -35,7 +36,7 @@ moment.updateLocale('pt-BR', {
 
 moment.locale('pt-BR')
 
-class DatePicker extends Component {
+class DatePicker extends StateComponent {
   constructor (props) {
     super()
 
@@ -46,37 +47,19 @@ class DatePicker extends Component {
     this.state = merge(props, {
       startDate: startDate ? moment(startDate) : moment(),
       endDate: moment('12-14-2059'),
+      previewsStartDate: null,
+      previewsEndDate: null,
       date: moment(),
-      focusedInput: null,
+      previewsDate: moment(),
+      focusedInput: 'startDate',
     })
 
     this.onDatesChange = this.onDatesChange.bind(this)
     this.onDateChange = this.onDateChange.bind(this)
     this.onRangeFocusChange = this.onRangeFocusChange.bind(this)
     this.onFocusChange = this.onFocusChange.bind(this)
-  }
-
-  onDatesChange ({ startDate, endDate }) {
-    this.setState({
-      startDate,
-      endDate,
-    })
-  }
-
-  onDateChange (date) {
-    this.setState({ date })
-  }
-
-  onRangeFocusChange (focusedInput) {
-    this.setState({
-      focusedInput,
-    })
-  }
-
-  onFocusChange ({focused}) {
-    this.setState({
-      focused,
-    })
+    this.onClickCancelDates = this.onClickCancelDates.bind(this)
+    this.onClickConfirmDates = this.onClickConfirmDates.bind(this)
   }
 
   render () {
@@ -84,7 +67,7 @@ class DatePicker extends Component {
       hideKeyboardShortcutsPanel: true,
       navPrev: <IconAngleLeft />,
       navNext: <IconAngleRight />,
-      keepOpenOnDateSelect: true
+      keepOpenOnDateSelect: true,
     }
 
     const {
@@ -100,7 +83,7 @@ class DatePicker extends Component {
     } = this.props
 
     const filteredProps = omit(
-      ['range'],
+      ['range', 'onDateChange', 'onDatesChange'],
       this.props
     )
 
@@ -133,9 +116,11 @@ class DatePicker extends Component {
             <div
               className="DatePicker_confirmation">
               <button
+                onClick={this.onClickCancelDates}
                 className="DatePicker_confirmation__button"
               >Cancelar</button>
               <button
+                onClick={this.onClickConfirmDates}
                 className="DatePicker_confirmation__button"
               >Ok</button>
             </div>
@@ -156,9 +141,11 @@ class DatePicker extends Component {
             <div
               className="DatePicker_confirmation">
               <button
+                onClick={this.onClickCancelDates}
                 className="DatePicker_confirmation__button"
               >Cancelar</button>
               <button
+                onClick={this.onClickConfirmDates}
                 className="DatePicker_confirmation__button"
               >Ok</button>
             </div>
