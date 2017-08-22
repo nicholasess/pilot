@@ -3,11 +3,11 @@ $react-dates-width-arrow: 24px !default;
 $react-dates-width-tooltip-arrow: 20px !default;
 $react-dates-spacing-vertical-picker: 72px !default;
 
-$react-dates-color-primary: #00a699 !default;
-$react-dates-color-primary-shade-1: #33dacd !default;
-$react-dates-color-primary-shade-2: #66e2da !default;
-$react-dates-color-primary-shade-3: #80e8e0 !default;
-$react-dates-color-primary-shade-4: #b2f1ec !default;
+$react-dates-color-primary: transparent !default;
+$react-dates-color-primary-shade-1: transparent !default;
+$react-dates-color-primary-shade-2: transparent !default;
+$react-dates-color-primary-shade-3: transparent !default;
+$react-dates-color-primary-shade-4: transparent !default;
 $react-dates-color-secondary: #007a87 !default;
 $react-dates-color-white: #fff !default;
 $react-dates-color-gray: #565a5c !default;
@@ -29,76 +29,188 @@ $react-dates-z-index: 0 !default;
 
 @import '~react-dates/css/variables.scss';
 @import '~react-dates/css/styles.scss';
+@import "./range.scss";
+@import "./default.scss";
 
-:global .DayPicker__week-headers {
+.DatePicker {
+  font-family: "Uni Neue";
 }
 
-:global .DayPickerNavigation--horizontal {
-  height: 15.63em;
-  background-image: linear-gradient(-145deg, rgba(104, 181, 193, 0.4), #3ed2a4);
-  position: relative !important;
+.DayPickerNavigation--horizontal {
+  background-image: linear-gradient(
+    -145deg,
+    rgba(104, 181, 193, 0.4),
+    #3ed2a4
+  );
+  position: unset !important;
   z-index: 10 !important;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-
-  border-radius: 3px;
+  border-radius: 0.1em;
   background-color: #fff;
-  background-color: #fff;
-  box-shadow: 0 0 9.9px 0.1px rgba(85, 99, 116, 0.3);
-  border: solid 1px #d2d2d2;
-
-  .DayPickerNavigation__prev,
-  .DayPickerNavigation__next {
-    height: 2em;
-  }
 }
 
-:global .DayPickerNavigation--horizontal * {
+.DayPickerNavigation--horizontal svg {
+  fill: #fff;
+  font-size: 2.5em;
+}
+
+.DayPickerNavigation__prev,
+.DayPickerNavigation__next {
+  margin: 0 !important;
+  padding: 0 !important;
   position: unset !important;
-  padding: unset !important;
   top: unset !important;
-  z-index: unset !important;
-  border: unset !important;
+  left: unset !important;
+  right: unset !important;
+  border: none !important;
+  background-color: unset !important;
 }
 
-:global .transition-container--horizontal {
-  position: relative !important;
-  width: 300px !important;
-  z-index: 11 !important;
-  transform: translateY(0em);
+.DateInput--with-caret:after,
+.DateInput--with-caret:before {
+  display: none;
 }
 
-:global .CalendarMonthGrid--horizontal {
-  left: unset;
-}
+.DayPicker__week-header {
+  font-family: UniNeue;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+  color: #3ed2a4;
 
-:global .DayPicker--horizontal {
-  width: 300px !important;
-  overflow: hidden !important;
-}
-
-:global .DayPicker--horizontal * {
-  overflow: unset !important;
-}
-
-:global .CalendarMonthGrid {
-  background-color: unset;
-}
-
-:global .CalendarMonth--horizontal {
-  .CalendarMonth__caption {
-    padding: unset !important;
-    z-index: 20;
-    position: relative;
-    width: 91%;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    transform: translate(5%, -1.5em);
+  small {
+    font-size: 0.9em;
+    font-family: "Uni Neue";
+    font-weight: 200;
   }
+}
 
-  .CalendarMonth__caption {
+.CalendarDay--selected {
+  background-image: linear-gradient(132deg, #fc9568 12%, #ff857a) !important;
+  border: none !important;
+}
 
+.CalendarDay--hovered {
+  background-image: linear-gradient(132deg, #fc9568 12%, #ff857a) !important;
+  color: #fff !important;
+  border: none !important;
+  border-color: transparent !important;
+}
+
+.CalendarDay--hovered-span {
+  background-color: rgba(252, 149, 104, 0.2);
+  color: #434343;
+}
+
+.CalendarDay--selected-span {
+  background-color: rgba(252, 149, 104, 0.2);
+  color: #434343;
+}
+
+.CalendarDay--selected-start,
+.CalendarDay--selected-end,
+.CalendarDay--hovered,
+.CalendarDay--selected {
+  background-color: none !important;
+}
+
+.transition-container {
+  overflow: unset;
+}
+
+.CalendarDay--selected-start,
+.CalendarDay--selected-end {
+  background-image: linear-gradient(132deg, #fc9568 12%, #ff857a) !important;
+  color: #fff;
+  position: relative;
+  color: #fff !important;
+
+  button {
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0.7em;
+      border: none;
+      border-style: solid;
+      border-left-width: 0.5em;
+      border-left-color: transparent;
+      border-right-width: 0.5em;
+      border-right-color: transparent;
+      border-top-width: 0.5em;
+      border-top-color: transparent;
+      border-bottom-width: 0.5em;
+      border-bottom-color: transparent;
+      height: 0;
+      width: 0;
+    }
   }
+}
+
+.CalendarMonth__caption {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: silver;
+}
+
+.DatePicker .DatePicker_confirmation {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.DatePicker_open .DatePicker_confirmation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.DatePicker_default.DatePicker_open .DatePicker_confirmation {
+  width: 300px;
+  transform: translate(-0.7em, 450px);
+}
+
+.CalendarMonthGrid {
+  background-color: transparent;
+}
+
+.DatePicker_open .DatePicker_confirmation__button {
+  border: none;
+  background: none;
+  color: #3ed2a4;
+  cursor: pointer;
+  padding: 0.5em 1em;
+}
+
+.CalendarDay--selected-start button:after {
+  display: none;
+}
+
+.CalendarDay--selected-start button:before {
+  right: -1em;
+  border-left-color: #ff857a;
+}
+
+.CalendarDay--selected-end button:before {
+  right: unset;
+  left: -1em;
+  border-right-color: #ff857a;
+}
+
+.CalendarDay {
+  width: 44px;
+  height: 44px;
+  border: none;
+}
+
+.CalendarDay--blocked {
+  color: rgba(94, 94, 94, 0.5);
+}
+
+.CalendarDay--selected-span.CalendarDay--blocked {
+  color: #434343;
 }

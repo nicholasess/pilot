@@ -1,0 +1,96 @@
+
+.DatePicker_default {
+  .SingleDatePicker__picker {
+    top: 0;
+  }
+
+  .DayPicker__focus-region {
+    border: solid 1px #d2d2d2;
+    box-shadow: 0 0 9.9px 0.1px rgba(85, 99, 116, 0.3);
+  }
+
+  .DayPickerNavigation--horizontal {
+    height: 15.63em;
+    background-image: linear-gradient(
+      -145deg,
+      rgba(104, 181, 193, 0.4),
+      #3ed2a4
+    );
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-radius: 0.1em;
+    background-color: #3ed2a4;
+
+    .DayPickerNavigation__prev,
+    .DayPickerNavigation__next {
+      height: 2em;
+      margin-bottom: 1em !important;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 280px;
+      background: #fff;
+      top: 0;
+      left: 0;
+      transform: translate(10px, 195px);
+    }
+  }
+
+  .DayPickerNavigation--horizontal * {
+    position: unset !important;
+    padding: unset !important;
+    top: unset !important;
+    z-index: unset !important;
+    border: unset !important;
+  }
+
+  .transition-container--horizontal {
+    position: relative !important;
+    width: 300px !important;
+    height: 276px !important;
+    z-index: 11 !important;
+    transform: translate(0em, 26px);
+    padding-bottom: 0.8em;
+  }
+
+  .CalendarMonthGrid--horizontal {
+    left: unset;
+  }
+
+  .DayPicker--horizontal {
+    width: 300px !important;
+    overflow: hidden !important;
+  }
+
+  .CalendarMonthGrid {
+    background-color: unset;
+  }
+
+  .CalendarMonth--horizontal {
+    .CalendarMonth__caption {
+      padding: unset !important;
+      z-index: 20;
+      position: relative;
+      width: 91%;
+      transform: translate(0.8em, -3.7em);
+      color: #fff;
+
+      strong {
+        font-weight: 600;
+        text-transform: lowercase;
+      }
+    }
+  }
+
+  .DayPicker__week-header {
+    top: 0;
+    padding: 0;
+    transform: translate(0, 268px);
+  }
+}
