@@ -5,6 +5,8 @@
   --button-color-green-dashed-text: #5dccb7;
   --button-color-green-dashed-hover-text: #4db9a5;
   --button-color-green-text: #fff;
+  --button-color-text-grey: #777777;
+  --button-color-back-grey: #F4F4F4;
 }
 
 
@@ -72,6 +74,14 @@
 .dashed.green:hover,
 .outline.green:hover {
   border-color: var(--button-color-green-dashed-hover-text);
+}
+
+.block,
+.block:hover {
+  width: 100%;
+  color: var(--button-color-text-grey);
+  background: var(--button-color-back-grey);
+  border-radius: 0;
 }
 
 .button > svg {

@@ -73,3 +73,11 @@ storiesOf( 'Button', module )
       </Button>
     </div>
   )
+
+  .add( 'button block', () =>
+    <div className={style.divBlock}>
+      <Button onClick={action( 'clicked' )} type="block">Block Button 1</Button>
+      <Button onClick={action( 'clicked' )} type="block">Block Button 2</Button>
+      <Button onClick={action( 'clicked' )} type="block">Block Button 3</Button>
+    </div>
+  )
