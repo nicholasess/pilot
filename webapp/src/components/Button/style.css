@@ -73,3 +73,7 @@
 .outline.green:hover {
   border-color: var(--button-color-green-dashed-hover-text);
 }
+
+.button > svg {
+  margin: -3px 10px 0 0;
+}
