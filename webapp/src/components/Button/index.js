@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import style from './style.css'
 
-function Button ({ type, children }) {
+function Button ({ onClick, type, children }) {
   const className = classNames(
     style.button,
     style.green,
@@ -12,7 +12,7 @@ function Button ({ type, children }) {
   )
 
   return (
-    <button className={className}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   )
@@ -21,6 +21,7 @@ function Button ({ type, children }) {
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  onClick: PropTypes.string.isRequired,
 }
 
 export default Button
