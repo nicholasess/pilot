@@ -4,10 +4,10 @@ import classNames from 'classnames'
 
 import style from './style.css'
 
-function Button ({ type, color, children }) {
+function Button ({ type, children }) {
   const className = classNames(
     style.button,
-    style[color],
+    style.green,
     style[type]
   )
 
@@ -20,7 +20,6 @@ function Button ({ type, color, children }) {
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 }
 
