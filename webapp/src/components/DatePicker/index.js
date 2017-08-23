@@ -38,7 +38,7 @@ moment.locale('pt-BR')
 
 class DatePicker extends StateComponent {
   constructor (props) {
-    super()
+    super(props)
 
     const {
       startDate
@@ -51,15 +51,8 @@ class DatePicker extends StateComponent {
       previewsEndDate: null,
       date: moment(),
       previewsDate: moment(),
-      focusedInput: 'startDate',
+      focusedInput: null,
     })
-
-    this.onDatesChange = this.onDatesChange.bind(this)
-    this.onDateChange = this.onDateChange.bind(this)
-    this.onRangeFocusChange = this.onRangeFocusChange.bind(this)
-    this.onFocusChange = this.onFocusChange.bind(this)
-    this.onClickCancelDates = this.onClickCancelDates.bind(this)
-    this.onClickConfirmDates = this.onClickConfirmDates.bind(this)
   }
 
   render () {
@@ -91,7 +84,7 @@ class DatePicker extends StateComponent {
       'DatePicker': true,
       'DatePicker_default': !range,
       'DatePicker_range': range,
-      'DatePicker_open': focused || focusedInput
+      'DatePicker_open': range ? !!focusedInput : !!focused
     })
 
     return (

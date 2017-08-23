@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 
 export default class StateComponent extends Component {
-  constructor() {
-    super()
+  constructor (props) {
+    super(props)
+
+    this.onDatesChange = this.onDatesChange.bind(this)
+    this.onDateChange = this.onDateChange.bind(this)
+    this.onRangeFocusChange = this.onRangeFocusChange.bind(this)
+    this.onFocusChange = this.onFocusChange.bind(this)
+    this.onClickCancelDates = this.onClickCancelDates.bind(this)
+    this.onClickConfirmDates = this.onClickConfirmDates.bind(this)
   }
 
   onDatesChange ({ startDate, endDate }) {
@@ -13,7 +20,6 @@ export default class StateComponent extends Component {
   }
 
   onDateChange (date) {
-    console.log('onDateChange', date);
     this.setState({
       date
     })
@@ -21,47 +27,47 @@ export default class StateComponent extends Component {
 
   onRangeFocusChange (focusedInput) {
     this.setState({
-      focusedInput
+      focusedInput,
     })
 
-    this.onClickCancelDates()
+    this.props.onFocusChange({ focusedInput })
   }
 
   onFocusChange ({focused}) {
-    this.setState(() => ({
+    this.setState({
       focused,
-    }))
+    })
 
-    this.onClickCancelDates()
+    this.props.onFocusChange({ focused })
   }
 
   onClickCancelDates () {
-    console.log('onClickCancelDates')
-
     const {
       previewsStartDate,
       previewsEndDate,
       previewsDate,
+      startDate,
+      endDate,
+      date,
       focusedInput,
       focused,
-      date,
     } = this.state
 
     if(this.props.range) {
       this.setState({
-        startDate: previewsEndDate,
-        endDate: previewsStartDate,
+        startDate: previewsEndDate || startDate,
+        endDate: previewsStartDate || endDate,
+        focusedInput: false,
       })
     } else {
       this.setState({
-        date: previewsDate
+        date: previewsDate,
+        focused: false,
       })
     }
   }
 
   onClickConfirmDates () {
-    console.log('onClickConfirmDates')
-
     const {
       startDate,
       endDate,
@@ -74,9 +80,8 @@ export default class StateComponent extends Component {
       this.setState({
         previewsEndDate: startDate,
         previewsStartDate: endDate,
+        focusedInput: null,
       })
-
-      console.log('this.props.onDateChange', startDate, endDate);
 
       this.props.onDatesChange({
         startDate,
@@ -84,10 +89,9 @@ export default class StateComponent extends Component {
       })
     } else {
       this.setState({
-        previewsDate: date
+        previewsDate: date,
+        focused: false,
       })
-
-      console.log('this.props.onDateChange', date);
 
       this.props.onDateChange(date)
     }
