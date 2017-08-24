@@ -10,12 +10,14 @@ export default class StateComponent extends Component {
     this.onFocusChange = this.onFocusChange.bind(this)
     this.onClickCancelDates = this.onClickCancelDates.bind(this)
     this.onClickConfirmDates = this.onClickConfirmDates.bind(this)
+    this.toggleOpen = this.toggleOpen.bind(this)
+    this.onPeriodChange = this.onPeriodChange.bind(this)
   }
 
   onDatesChange ({ startDate, endDate }) {
     this.setState({
-      startDate: startDate,
-      endDate: endDate,
+      startDate: startDate || this.state.startDate,
+      endDate: endDate || this.state.endDate,
     })
   }
 
@@ -53,11 +55,15 @@ export default class StateComponent extends Component {
       focused,
     } = this.state
 
-    if(this.props.range) {
+    const {
+      range
+    } = this.props
+
+    if(range) {
       this.setState({
-        startDate: previewsEndDate || startDate,
-        endDate: previewsStartDate || endDate,
-        focusedInput: false,
+        startDate: previewsStartDate,
+        endDate: previewsEndDate,
+        focusedInput: null,
       })
     } else {
       this.setState({
@@ -78,8 +84,8 @@ export default class StateComponent extends Component {
 
     if (this.props.range) {
       this.setState({
-        previewsEndDate: startDate,
-        previewsStartDate: endDate,
+        previewsStartDate: startDate,
+        previewsEndDate: endDate,
         focusedInput: null,
       })
 
@@ -95,6 +101,32 @@ export default class StateComponent extends Component {
 
       this.props.onDateChange(date)
     }
+  }
 
+  toggleOpen () {
+    const {
+      focused,
+      focusedInput
+    } = this.state
+
+    const {
+      range
+    } = this.props
+
+    if (range && !focusedInput) {
+      this.setState({
+        focusedInput: 'startDate',
+      })
+    }
+
+    if (!range && !focused) {
+      this.setState({ focused: true })
+    }
+  }
+
+  onPeriodChange (period) {
+    this.setState({
+      focusedInput: period
+    })
   }
 }

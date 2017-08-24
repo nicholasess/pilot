@@ -3,48 +3,31 @@ import {
   DateRangePicker,
   SingleDatePicker
 } from 'react-dates'
-import moment from 'moment'
+import moment from './moment'
 import {
   merge,
   omit,
+  is,
 } from 'ramda'
 import classNames from 'classnames'
 import IconAngleLeft from 'react-icons/lib/fa/angle-left'
 import IconAngleRight from 'react-icons/lib/fa/angle-right'
-import tz from 'moment-timezone'
+
 import StateComponent from './StateComponent'
+import ShowDate from './ShowDate'
+import ControlButtons from './ControlButtons'
 
 import './style.scss'
-
-moment.updateLocale('pt-BR', {
-  weekdaysMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-  months: [
-    'Janeiro',
-    'Feveiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
-  ],
-})
-
-moment.locale('pt-BR')
 
 class DatePicker extends StateComponent {
   constructor (props) {
     super(props)
 
     const {
-      startDate
+      startDate,
     } = props
 
-    this.state = merge(props, {
+    this.state = merge({}, props, {
       startDate: startDate ? moment(startDate) : moment(),
       endDate: moment('12-14-2059'),
       previewsStartDate: null,
@@ -56,13 +39,6 @@ class DatePicker extends StateComponent {
   }
 
   render () {
-    const defaultProps = {
-      hideKeyboardShortcutsPanel: true,
-      navPrev: <IconAngleLeft />,
-      navNext: <IconAngleRight />,
-      keepOpenOnDateSelect: true,
-    }
-
     const {
       startDate,
       endDate,
@@ -73,29 +49,62 @@ class DatePicker extends StateComponent {
 
     const {
       range,
+      disableWeekends
     } = this.props
 
+    const defaultProps = {
+      hideKeyboardShortcutsPanel: true,
+      navPrev: <IconAngleLeft />,
+      navNext: <IconAngleRight />,
+      keepOpenOnDateSelect: true,
+      readOnly: true,
+      onFocusChange: (focused) => {
+        if (focused === null) { return }
+
+        if (is(Boolean, focused)) {
+          this.setState({ focused })
+        } else {
+          this.setState({ focusedInput: focused })
+        }
+      },
+      isDayBlocked: (date) => {
+        if (disableWeekends) {
+          return date.day() === 6 || date.day() === 0
+        }
+      }
+    }
+
     const filteredProps = omit(
-      ['range', 'onDateChange', 'onDatesChange'],
-      this.props
+      ['range', 'onDateChange', 'onDatesChange', 'onFocusChange'],
+      this.props,
     )
 
     const className = classNames({
-      'DatePicker': true,
-      'DatePicker_default': !range,
-      'DatePicker_range': range,
-      'DatePicker_open': range ? !!focusedInput : !!focused
+      DatePicker: true,
+      DatePicker_default: !range,
+      DatePicker_range: range,
     })
 
     return (
-      <div>
-        {(range? (
+      <div onClick={this.toggleOpen}>
+        {range && (
           <div
             className={className}
           >
-            <div>
-              Uns treco!
-            </div>
+            {focusedInput && (
+              <div className='DatePicker__pane'>
+                <ShowDate
+                  date={moment(startDate)}
+                  period='start'
+                  onPeriodChange={this.onPeriodChange}
+                />
+                <ShowDate
+                  date={moment(endDate)}
+                  period='end'
+                  onPeriodChange={this.onPeriodChange}
+                />
+              </div>
+            )}
 
             <DateRangePicker
               {...merge(defaultProps, filteredProps)}
@@ -103,48 +112,46 @@ class DatePicker extends StateComponent {
               endDate={endDate}
               focusedInput={focusedInput}
               onDatesChange={this.onDatesChange}
-              onFocusChange={this.onRangeFocusChange}
+              startDatePlaceholderText='Inicio'
+              endDatePlaceholderText='Fim'
+              renderCalendarInfo={() => (
+                <ControlButtons
+                  focused={focused}
+                  onCancel={this.onClickCancelDates}
+                  onConfirm={this.onClickConfirmDates}
+                />
+              )}
             />
-
-            <div
-              className="DatePicker_confirmation">
-              <button
-                onClick={this.onClickCancelDates}
-                className="DatePicker_confirmation__button"
-              >Cancelar</button>
-              <button
-                onClick={this.onClickConfirmDates}
-                className="DatePicker_confirmation__button"
-              >Ok</button>
-            </div>
           </div>
-        ) : (
+        )}
+
+        {!range && (
           <div
             className={className}
           >
+
+            {focused && (
+              <div className='DatePicker__pane'>
+                <ShowDate date={moment(date)} />
+              </div>
+            )}
+
             <SingleDatePicker
               {...merge(defaultProps, filteredProps)}
               focused={focused}
               date={date}
               numberOfMonths={1}
               onDateChange={this.onDateChange}
-              onFocusChange={this.onFocusChange}
+              renderCalendarInfo={() => (
+                <ControlButtons
+                  focused={focused}
+                  onCancel={this.onClickCancelDates}
+                  onConfirm={this.onClickConfirmDates}
+                />
+              )}
             />
-
-            <div
-              className="DatePicker_confirmation">
-              <button
-                onClick={this.onClickCancelDates}
-                className="DatePicker_confirmation__button"
-              >Cancelar</button>
-              <button
-                onClick={this.onClickConfirmDates}
-                className="DatePicker_confirmation__button"
-              >Ok</button>
-            </div>
           </div>
-        )
-      )}
+        )}
       </div>
     )
   }
