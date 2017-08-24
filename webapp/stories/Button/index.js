@@ -64,11 +64,11 @@ storiesOf( 'Button', module )
       </Button>
       <Button onClick={action( 'clicked' )} type="flat">
         <ButtonDocs />
-        Documentação
+        DocumentaÃ§Ã£o
       </Button>
       <Button onClick={action( 'clicked' )} type="flat">
         <ButtonLetter />
-        Carta de Circulação
+        Carta de CirculaÃ§Ã£o
       </Button>
       <Button onClick={action( 'clicked' )} type="flat">
         <ButtonUpload />
