@@ -18,6 +18,9 @@ import style from './style.css'
 
 storiesOf( 'Button', module )
 
+  .add( 'green default', () =>
+    <Button>Default Button</Button> )
+
   .add( 'green flat', () =>
     <Button onClick={action( 'clicked' )} type="flat">Flat Button</Button> )
 
