@@ -1,6 +1,6 @@
 :root {
   --button-color-green-back: #4fc6b0;
-  --button-color-green-degrade: linear-gradient(to left, #3ed2a4, #5dccb7);
+  --button-color-green-gradient: linear-gradient(to left, #3ed2a4, #5dccb7);
   --button-color-green-light: #3ed2a4;
   --button-color-green-dashed-text: #5dccb7;
   --button-color-green-dashed-hover-text: #4db9a5;
@@ -27,8 +27,8 @@
   background-color: var(--button-color-green-light);
 }
 
-.green.degrade {
-  background: var(--button-color-green-degrade);
+.green.gradient {
+  background: var(--button-color-green-gradient);
 }
 
 .green:hover {

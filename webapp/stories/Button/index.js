@@ -24,8 +24,8 @@ storiesOf( 'Button', module )
   .add( 'green flat', () =>
     <Button onClick={action( 'clicked' )} type="flat">Flat Button</Button> )
 
-  .add( 'green degrade', () =>
-    <Button onClick={action( 'clicked' )} type="degrade">Degrade Button</Button> )
+  .add( 'green gradient', () =>
+    <Button onClick={action( 'clicked' )} type="gradient">Gradient Button</Button> )
 
   .add( 'green outline', () =>
     <Button onClick={action( 'clicked' )} type="outline">Outline Button</Button> )
