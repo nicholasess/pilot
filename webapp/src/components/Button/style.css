@@ -11,14 +11,14 @@
   --button-color-grey-back: #F4F4F4;
 }
 
-.green {
+.color-light-green-primary {
   color: var(--button-color-green-text);
   background-color: var(--button-color-green-back-flat);
   background-image: var(--button-color-green-back-gradient);
   border-color: var(--button-color-green-text);
 }
 
-.green:hover {
+.color-light-green-primary:hover {
   color: var(--button-color-green-text-hover);
   background-color: var(--button-color-green-back-hover);
   background-image: none;
