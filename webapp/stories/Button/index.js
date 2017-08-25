@@ -46,6 +46,8 @@ const iconList = [
   { component: ButtonUpload, text: 'Fazer Upload' },
 ]
 
+const clicked = action('clicked')
+
 parentList.map((s) => {
 
   storiesOf(`Button/${s.name}`, module )
@@ -60,7 +62,7 @@ parentList.map((s) => {
     .add( 'Com ícones', () =>
       <div className={stylesheet.buttonCollection} style={s.style}>
         {iconList.map((i) =>
-          <Button surround={s.color} onClick={action( 'clicked' )}>
+          <Button onClick={clicked} surround={s.color}>
             {i.component()}{i.text}
           </Button>
         )}
@@ -71,7 +73,7 @@ parentList.map((s) => {
       <div style={s.style}>
         <div className={stylesheet.buttonBlock}>
           {[1,2,3].map(( n ) =>
-            <Button surround={s.color} onClick={action( 'clicked' )} style="block">
+            <Button onClick={clicked} surround={s.color} style="block">
               Block Button {n}
             </Button>
           )}
@@ -84,7 +86,7 @@ function buttonAllColors( parent, children, style ) {
   return (
     <div className={stylesheet.buttonCollection} style={parent.style}>
       {colorList.map(( c ) =>
-        <Button onClick={action( 'clicked' )} surround={parent.surround} style={style} color={c}>
+        <Button onClick={clicked} surround={parent.surround} style={style} color={c}>
           {children}
         </Button>
       )}
