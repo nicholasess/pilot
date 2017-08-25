@@ -37,7 +37,7 @@ storiesOf( 'Button', module )
     <Button onClick={action( 'clicked' )} style="clean">Clean Button</Button> )
 
   .add( 'green icon', () =>
-    <div className={stylesheet.iconButtonCollection}>
+    <div className={stylesheet.buttonCollection}>
       <Button onClick={action( 'clicked' )} style="flat">
         <ButtonUser />
         Minha Conta
@@ -78,7 +78,7 @@ storiesOf( 'Button', module )
   )
 
   .add( 'button block', () =>
-    <div className={stylesheet.divBlock}>
+    <div className={stylesheet.buttonBlock}>
       <Button onClick={action( 'clicked' )} style="block">Block Button 1</Button>
       <Button onClick={action( 'clicked' )} style="block">Block Button 2</Button>
       <Button onClick={action( 'clicked' )} style="block">Block Button 3</Button>

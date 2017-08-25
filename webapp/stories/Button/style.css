@@ -1,13 +1,13 @@
-.iconButtonCollection {
+.buttonCollection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.iconButtonCollection > button {
+.buttonCollection > button {
   margin: 5px;
 }
 
-.divBlock {
+.buttonBlock {
   width: 244px;
 }
