@@ -16,71 +16,78 @@ import { action } from '@storybook/addon-actions'
 import Button from '../../src/components/Button'
 import stylesheet from './style.css'
 
-storiesOf( 'Button', module )
+const parentList = [
+  { surround: 'light', name: 'Claro', style: { padding: '20px', background: '#FFF' } },
+  { surround: 'dark', name: 'Escuro', style: { padding: '20px', background: '#333' } },
+]
 
-  .add( 'green default', () =>
-    <Button>Default Button</Button> )
+const colorList = [
+  'green-primary',
+  'green-secondary',
+  'green-contrast',
+  'silver',
+  'plumb',
+  'yellow',
+  'red',
+  'blue',
+  'purple',
+  'pink',
+]
 
-  .add( 'green flat', () =>
-    <Button onClick={action( 'clicked' )} style="flat">Flat Button</Button> )
+const iconList = [
+  { component: ButtonUser, text: 'Minha Conta' },
+  { component: ButtonLogoff, text: 'Desconectar' },
+  { component: ButtonExport, text: 'Exportar' },
+  { component: ButtonCopy, text: 'Copiar' },
+  { component: ButtonDelete, text: 'Excluir' },
+  { component: ButtonAdd, text: 'Adicionar' },
+  { component: ButtonDocs, text: 'Documentação' },
+  { component: ButtonLetter, text: 'Carta de Circulação' },
+  { component: ButtonUpload, text: 'Fazer Upload' },
+]
 
-  .add( 'green gradient', () =>
-    <Button onClick={action( 'clicked' )} style="gradient">Gradient Button</Button> )
+parentList.map((s) => {
 
-  .add( 'green outline', () =>
-    <Button onClick={action( 'clicked' )} style="outline">Outline Button</Button> )
+  storiesOf(`Button/${s.name}`, module )
 
-  .add( 'green dashed', () =>
-    <Button onClick={action( 'clicked' )} style="dashed">Dashed Button</Button> )
+    .add( 'Padrão', () => buttonAllColors(s, 'Botão Padrão') )
+    .add( 'Plano', () => buttonAllColors(s, 'Botão Plano', 'flat') )
+    .add( 'Gradiente', () => buttonAllColors(s, 'Botão Gradiente', 'gradient') )
+    .add( 'Contorno', () => buttonAllColors(s, 'Botão com Contorno', 'outline') )
+    .add( 'Tracejado', () => buttonAllColors(s, 'Botão Tracejado', 'dashed' ) )
+    .add( 'Sem fundo', () => buttonAllColors(s, 'Botão sem Fundo', 'clean') )
 
-  .add( 'green clean', () =>
-    <Button onClick={action( 'clicked' )} style="clean">Clean Button</Button> )
+    .add( 'Com ícones', () =>
+      <div className={stylesheet.buttonCollection} style={s.style}>
+        {iconList.map((i) =>
+          <Button surround={s.color} onClick={action( 'clicked' )}>
+            {i.component()}{i.text}
+          </Button>
+        )}
+      </div>
+    )
 
-  .add( 'green icon', () =>
-    <div className={stylesheet.buttonCollection}>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonUser />
-        Minha Conta
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonLogoff />
-        Desconectar
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonExport />
-        Exportar
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonCopy />
-        Copiar
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonDelete />
-        Excluir
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonAdd />
-        Adicionar
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonDocs />
-        Documentação
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonLetter />
-        Carta de Circulação
-      </Button>
-      <Button onClick={action( 'clicked' )} style="flat">
-        <ButtonUpload />
-        Fazer Upload
-      </Button>
+    .add( 'Bloco', () =>
+      <div style={s.style}>
+        <div className={stylesheet.buttonBlock}>
+          {[1,2,3].map(( n ) =>
+            <Button surround={s.color} onClick={action( 'clicked' )} style="block">
+              Block Button {n}
+            </Button>
+          )}
+        </div>
+      </div>
+    )
+})
+
+function buttonAllColors( parent, children, style ) {
+  return (
+    <div className={stylesheet.buttonCollection} style={parent.style}>
+      {colorList.map(( c ) =>
+        <Button onClick={action( 'clicked' )} surround={parent.surround} style={style} color={c}>
+          {children}
+        </Button>
+      )}
     </div>
   )
-
-  .add( 'button block', () =>
-    <div className={stylesheet.buttonBlock}>
-      <Button onClick={action( 'clicked' )} style="block">Block Button 1</Button>
-      <Button onClick={action( 'clicked' )} style="block">Block Button 2</Button>
-      <Button onClick={action( 'clicked' )} style="block">Block Button 3</Button>
-    </div>
-  )
+}

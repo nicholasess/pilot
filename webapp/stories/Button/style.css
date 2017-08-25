@@ -1,9 +1,3 @@
-.buttonCollection {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .buttonCollection > button {
   margin: 5px;
 }
