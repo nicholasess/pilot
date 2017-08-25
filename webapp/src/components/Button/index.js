@@ -8,7 +8,7 @@ function Button ({ onClick, style, children }) {
   const className = classNames(
     stylesheet.button,
     stylesheet.green,
-    stylesheet[style]
+    stylesheet[`style-${style}`]
   )
 
   return (

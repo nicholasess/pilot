@@ -35,37 +35,37 @@
   text-transform: uppercase;
 }
 
-.flat {
+.style-flat {
   background-image: none;
 }
 
-.flat,
-.flat:hover,
-.gradient,
-.gradient:hover {
+.style-flat,
+.style-flat:hover,
+.style-gradient,
+.style-gradient:hover {
   color: var(--button-color-text);
 }
 
-.dashed {
+.style-dashed {
   border: dashed 1px;
 }
 
-.outline {
+.style-outline {
   border: solid 1px;
 }
 
-.dashed,
-.dashed:hover,
-.outline,
-.outline:hover,
-.clean,
-.clean:hover {
+.style-dashed,
+.style-dashed:hover,
+.style-outline,
+.style-outline:hover,
+.style-clean,
+.style-clean:hover {
   background-color: transparent;
   background-image: none;
 }
 
-.block,
-.block:hover {
+.style-block,
+.style-block:hover {
   width: 100%;
   color: var(--button-color-text-grey);
   background: var(--button-color-back-grey);
