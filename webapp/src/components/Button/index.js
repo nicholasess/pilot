@@ -19,14 +19,14 @@ function Button ({ onClick, style, children }) {
 }
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
-  style: PropTypes.string,
   onClick: PropTypes.func,
+  style: PropTypes.string,
+  children: PropTypes.string.isRequired,
 }
 
 Button.defaultProps = {
-  style: 'flat',
   onClick: null,
+  style: 'flat',
 }
 
 export default Button
