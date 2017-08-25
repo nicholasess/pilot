@@ -1,29 +1,4 @@
-:root {
-  --button-color-green-text: #5dccb7;
-  --button-color-green-back-flat: #3ed2a4;
-  --button-color-green-back-gradient: linear-gradient(to left, #3ed2a4, #5dccb7);
-
-  --button-color-green-text-hover: #4db9a5;
-  --button-color-green-back-hover: #4fc6b0;
-
-  --button-color-white-text: #fff;
-  --button-color-grey-text: #777777;
-  --button-color-grey-back: #F4F4F4;
-}
-
-.color-light-green-primary {
-  color: var(--button-color-green-text);
-  background-color: var(--button-color-green-back-flat);
-  background-image: var(--button-color-green-back-gradient);
-  border-color: var(--button-color-green-text);
-}
-
-.color-light-green-primary:hover {
-  color: var(--button-color-green-text-hover);
-  background-color: var(--button-color-green-back-hover);
-  background-image: none;
-  border-color: var(--button-color-green-text-hover);
-}
+@import "./colors.css";
 
 .button {
   border: none;

@@ -1,0 +1,15 @@
+@import "./colorVariables.css";
+
+.color-light-green-primary {
+  color: var(--button-color-light-green-primary-200);
+  background-color: var(--button-color-light-green-primary-100);
+  background-image: var(--button-color-light-green-primary-gradient);
+  border-color: var(--button-color-light-green-primary-200);
+}
+
+.color-light-green-primary:hover {
+  color: var(--button-color-light-green-primary-300);
+  background-color: var(--button-color-light-green-primary-300);
+  background-image: none;
+  border-color: var(--button-color-light-green-primary-300);
+}
