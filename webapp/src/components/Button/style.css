@@ -1,26 +1,28 @@
 :root {
-  --button-color-green-back: #4fc6b0;
-  --button-color-green-gradient: linear-gradient(to left, #3ed2a4, #5dccb7);
-  --button-color-green-light: #3ed2a4;
-  --button-color-green-dashed-text: #5dccb7;
-  --button-color-green-dashed-hover-text: #4db9a5;
-  --button-color-text: #fff;
-  --button-color-text-grey: #777777;
-  --button-color-back-grey: #F4F4F4;
+  --button-color-green-text: #5dccb7;
+  --button-color-green-back-flat: #3ed2a4;
+  --button-color-green-back-gradient: linear-gradient(to left, #3ed2a4, #5dccb7);
+
+  --button-color-green-text-hover: #4db9a5;
+  --button-color-green-back-hover: #4fc6b0;
+
+  --button-color-white-text: #fff;
+  --button-color-grey-text: #777777;
+  --button-color-grey-back: #F4F4F4;
 }
 
 .green {
-  color: var(--button-color-green-dashed-text);
-  background-color: var(--button-color-green-light);
-  background-image: var(--button-color-green-gradient);
-  border-color: var(--button-color-green-dashed-text);
+  color: var(--button-color-green-text);
+  background-color: var(--button-color-green-back-flat);
+  background-image: var(--button-color-green-back-gradient);
+  border-color: var(--button-color-green-text);
 }
 
 .green:hover {
-  color: var(--button-color-green-dashed-hover-text);
-  background-color: var(--button-color-green-back);
+  color: var(--button-color-green-text-hover);
+  background-color: var(--button-color-green-back-hover);
   background-image: none;
-  border-color: var(--button-color-green-dashed-hover-text);
+  border-color: var(--button-color-green-text-hover);
 }
 
 .button {
@@ -39,11 +41,15 @@
   background-image: none;
 }
 
+.style-gradient {
+  background-color: none;
+}
+
 .style-flat,
 .style-flat:hover,
 .style-gradient,
 .style-gradient:hover {
-  color: var(--button-color-text);
+  color: var(--button-color-white-text);
 }
 
 .style-dashed {
@@ -67,8 +73,8 @@
 .style-block,
 .style-block:hover {
   width: 100%;
-  color: var(--button-color-text-grey);
-  background: var(--button-color-back-grey);
+  color: var(--button-color-grey-text);
+  background: var(--button-color-grey-back);
   border-radius: 0;
 }
 
