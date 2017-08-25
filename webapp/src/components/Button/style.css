@@ -4,11 +4,24 @@
   --button-color-green-light: #3ed2a4;
   --button-color-green-dashed-text: #5dccb7;
   --button-color-green-dashed-hover-text: #4db9a5;
-  --button-color-green-text: #fff;
+  --button-color-text: #fff;
   --button-color-text-grey: #777777;
   --button-color-back-grey: #F4F4F4;
 }
 
+.green {
+  color: var(--button-color-green-dashed-text);
+  background-color: var(--button-color-green-light);
+  background-image: var(--button-color-green-gradient);
+  border-color: var(--button-color-green-dashed-text);
+}
+
+.green:hover {
+  color: var(--button-color-green-dashed-hover-text);
+  background-color: var(--button-color-green-back);
+  background-image: none;
+  border-color: var(--button-color-green-dashed-hover-text);
+}
 
 .button {
   border: none;
@@ -22,18 +35,15 @@
   text-transform: uppercase;
 }
 
-.green {
-  color: var(--button-color-green-text);
-  background-color: var(--button-color-green-light);
-}
-
-.green.gradient {
-  background: var(--button-color-green-gradient);
-}
-
-.green:hover {
-  background-color: var(--button-color-green-back);
+.flat {
   background-image: none;
+}
+
+.flat,
+.flat:hover,
+.gradient,
+.gradient:hover {
+  color: var(--button-color-text);
 }
 
 .dashed {
@@ -52,28 +62,6 @@
 .clean:hover {
   background-color: transparent;
   background-image: none;
-}
-
-.dashed.green,
-.outline.green,
-.clean.green {
-  color: var(--button-color-green-dashed-text);
-}
-
-.dashed.green,
-.outline.green {
-  border-color: var(--button-color-green-dashed-text);
-}
-
-.dashed.green:hover,
-.outline.green:hover,
-.clean.green:hover {
-  color: var(--button-color-green-dashed-hover-text);
-}
-
-.dashed.green:hover,
-.outline.green:hover {
-  border-color: var(--button-color-green-dashed-hover-text);
 }
 
 .block,
