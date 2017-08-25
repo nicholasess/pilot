@@ -4,11 +4,12 @@ import classNames from 'classnames'
 
 import stylesheet from './style.css'
 
-function Button ({ onClick, style, surround, color, children }) {
+function Button ({ onClick, style, surround, color, size, children }) {
   const className = classNames(
     stylesheet.button,
     stylesheet[`style-${style}`],
-    stylesheet[`color-${surround}-${color}`]
+    stylesheet[`color-${surround}-${color}`],
+    stylesheet[`size-${size}`]
   )
 
   return (
@@ -23,6 +24,7 @@ Button.propTypes = {
   style: PropTypes.string,
   surround: PropTypes.string,
   color: PropTypes.string,
+  size: PropTypes.string,
   children: PropTypes.string.isRequired,
 }
 
@@ -31,6 +33,7 @@ Button.defaultProps = {
   style: 'flat',
   surround: 'light',
   color: 'green-primary',
+  size: null,
 }
 
 export default Button

@@ -46,6 +46,15 @@ const iconList = [
   { component: ButtonUpload, text: 'Fazer Upload' },
 ]
 
+const sizeList = [
+  'mini',
+  'smaller',
+  'small',
+  null,
+  'big',
+  'bigger',
+]
+
 const clicked = action('clicked')
 
 parentList.map((s) => {
@@ -75,6 +84,16 @@ storiesOf( `Button/Tamanhos e Formas`, module )
       {[1, 2, 3].map(( n ) =>
         <Button onClick={clicked} style="block">
           Botão de Bloco
+        </Button>
+      )}
+    </div>
+  )
+
+  .add( 'Tamanhos', () =>
+    <div className={stylesheet.buttonColumn}>
+      {sizeList.map((s) =>
+        <Button onClick={clicked} size={s}>
+          Botão
         </Button>
       )}
     </div>
