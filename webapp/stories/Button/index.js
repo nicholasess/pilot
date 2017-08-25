@@ -49,38 +49,36 @@ const iconList = [
 const clicked = action('clicked')
 
 parentList.map((s) => {
-
   storiesOf(`Button/${s.name}`, module )
-
     .add( 'Padrão', () => buttonAllColors(s, 'Botão Padrão') )
     .add( 'Plano', () => buttonAllColors(s, 'Botão Plano', 'flat') )
     .add( 'Gradiente', () => buttonAllColors(s, 'Botão Gradiente', 'gradient') )
     .add( 'Contorno', () => buttonAllColors(s, 'Botão com Contorno', 'outline') )
     .add( 'Tracejado', () => buttonAllColors(s, 'Botão Tracejado', 'dashed' ) )
     .add( 'Sem fundo', () => buttonAllColors(s, 'Botão sem Fundo', 'clean') )
-
-    .add( 'Com ícones', () =>
-      <div className={stylesheet.buttonCollection} style={s.style}>
-        {iconList.map((i) =>
-          <Button onClick={clicked} surround={s.color}>
-            {i.component()}{i.text}
-          </Button>
-        )}
-      </div>
-    )
-
-    .add( 'Bloco', () =>
-      <div style={s.style}>
-        <div className={stylesheet.buttonBlock}>
-          {[1,2,3].map(( n ) =>
-            <Button onClick={clicked} surround={s.color} style="block">
-              Block Button {n}
-            </Button>
-          )}
-        </div>
-      </div>
-    )
 })
+
+storiesOf( `Button/Tamanhos e Formas`, module )
+
+  .add( 'Com ícones', () =>
+    <div className={stylesheet.buttonCollection}>
+      {iconList.map(( i ) =>
+        <Button onClick={clicked}>
+          {i.component()}{i.text}
+        </Button>
+      )}
+    </div>
+  )
+
+  .add( 'Bloco', () =>
+    <div className={stylesheet.buttonBlock}>
+      {[1, 2, 3].map(( n ) =>
+        <Button onClick={clicked} style="block">
+          Botão de Bloco
+        </Button>
+      )}
+    </div>
+  )
 
 function buttonAllColors( parent, children, style ) {
   return (
