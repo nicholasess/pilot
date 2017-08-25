@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import style from './style.css'
+import stylesheet from './style.css'
 
-function Button ({ onClick, type, children }) {
+function Button ({ onClick, style, children }) {
   const className = classNames(
-    style.button,
-    style.green,
-    style[type]
+    stylesheet.button,
+    stylesheet.green,
+    stylesheet[style]
   )
 
   return (
@@ -20,12 +20,12 @@ function Button ({ onClick, type, children }) {
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  style: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 Button.defaultProps = {
-  type: 'flat',
+  style: 'flat',
   onClick: null,
 }
 

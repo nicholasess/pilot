@@ -14,7 +14,7 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import Button from '../../src/components/Button'
-import style from './style.css'
+import stylesheet from './style.css'
 
 storiesOf( 'Button', module )
 
@@ -22,55 +22,55 @@ storiesOf( 'Button', module )
     <Button>Default Button</Button> )
 
   .add( 'green flat', () =>
-    <Button onClick={action( 'clicked' )} type="flat">Flat Button</Button> )
+    <Button onClick={action( 'clicked' )} style="flat">Flat Button</Button> )
 
   .add( 'green gradient', () =>
-    <Button onClick={action( 'clicked' )} type="gradient">Gradient Button</Button> )
+    <Button onClick={action( 'clicked' )} style="gradient">Gradient Button</Button> )
 
   .add( 'green outline', () =>
-    <Button onClick={action( 'clicked' )} type="outline">Outline Button</Button> )
+    <Button onClick={action( 'clicked' )} style="outline">Outline Button</Button> )
 
   .add( 'green dashed', () =>
-    <Button onClick={action( 'clicked' )} type="dashed">Dashed Button</Button> )
+    <Button onClick={action( 'clicked' )} style="dashed">Dashed Button</Button> )
 
   .add( 'green clean', () =>
-    <Button onClick={action( 'clicked' )} type="clean">Clean Button</Button> )
+    <Button onClick={action( 'clicked' )} style="clean">Clean Button</Button> )
 
   .add( 'green icon', () =>
-    <div className={style.iconButtonCollection}>
-      <Button onClick={action( 'clicked' )} type="flat">
+    <div className={stylesheet.iconButtonCollection}>
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonUser />
         Minha Conta
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonLogoff />
         Desconectar
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonExport />
         Exportar
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonCopy />
         Copiar
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonDelete />
         Excluir
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonAdd />
         Adicionar
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonDocs />
         Documentação
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonLetter />
         Carta de Circulação
       </Button>
-      <Button onClick={action( 'clicked' )} type="flat">
+      <Button onClick={action( 'clicked' )} style="flat">
         <ButtonUpload />
         Fazer Upload
       </Button>
@@ -78,9 +78,9 @@ storiesOf( 'Button', module )
   )
 
   .add( 'button block', () =>
-    <div className={style.divBlock}>
-      <Button onClick={action( 'clicked' )} type="block">Block Button 1</Button>
-      <Button onClick={action( 'clicked' )} type="block">Block Button 2</Button>
-      <Button onClick={action( 'clicked' )} type="block">Block Button 3</Button>
+    <div className={stylesheet.divBlock}>
+      <Button onClick={action( 'clicked' )} style="block">Block Button 1</Button>
+      <Button onClick={action( 'clicked' )} style="block">Block Button 2</Button>
+      <Button onClick={action( 'clicked' )} style="block">Block Button 3</Button>
     </div>
   )
