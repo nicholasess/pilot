@@ -66,8 +66,7 @@ gestão de dependências no início do projeto.
 
 ### Stack
 
-A stack foi escolhida baseada em o que empresas como Facebook, AirBnb,
-e New York Times estão usando para construir suas experiências. Também foi
+A stack foi escolhida baseada em empresas como Facebook, AirBnb,New York Times e estão usando para construir suas experiências. Também foi
 levado em consideração a simplicidade, curva de aprendizado e requisitos
 como fácil distribuição e entrega progressiva.
 
