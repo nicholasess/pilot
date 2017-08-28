@@ -65,9 +65,8 @@ faça sentido. Adotamos o modelo de monorepo para não ter o overhead de
 gestão de dependências no início do projeto.
 
 ### Stack
-
-A stack foi escolhida baseada em empresas como Facebook, AirBnb,New York Times e estão usando para construir suas experiências. Também foi
-levado em consideração a simplicidade, curva de aprendizado e requisitos
+Para construir nossa experiência, a stack foi baseada em empresas como Facebook, AirBnb, New York Times.
+Também foi levado em consideração a simplicidade, curva de aprendizado e requisitos
 como fácil distribuição e entrega progressiva.
 
 Tendo isso em vista, fomos de React. A estrutura do projeto foi iniciada
